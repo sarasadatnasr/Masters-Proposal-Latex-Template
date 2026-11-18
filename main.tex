@@ -13,6 +13,11 @@
 \usepackage{array}
 \usepackage{enumitem}
 \usepackage{colortbl}
+\usepackage{cite}
+\usepackage{comment}
+\usepackage[most]{tcolorbox}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
 
 \usetikzlibrary{positioning}
 
@@ -23,12 +28,11 @@
 % ============================================================
 
 \settextfont[
-Path=C:/Users/saran/Desktop/Proposal/font/,
+Path=font/,
 Extension=.ttf,
-BoldFont={XB NiloofarBd},
-ItalicFont={XB NiloofarIt},
-BoldItalicFont={XB NiloofarBdIt}
-]{XB Niloofar}
+BoldFont={BNaznnBd},
+ItalicFont={BNazannO},
+]{BNazanin}
 
 % ============================================================
 % Colors
@@ -38,11 +42,69 @@ BoldItalicFont={XB NiloofarBdIt}
 \definecolor{utblue}{RGB}{53,108,198}
 
 % ============================================================
-% Page style
+% Breakable box style — explicit 4-sided double blue border
 % ============================================================
 
-\pagestyle{empty}
+\newcommand{\drawproposalframe}{%
+	% ---- Outer rectangle (4 sides drawn explicitly) ----
+	\draw[utblue, line width=0.8pt]
+	(frame.north west) -- (frame.north east);
+	\draw[utblue, line width=0.8pt]
+	(frame.north east) -- (frame.south east);
+	\draw[utblue, line width=0.8pt]
+	(frame.south east) -- (frame.south west);
+	\draw[utblue, line width=0.8pt]
+	(frame.south west) -- (frame.north west);
+	% ---- Inner rectangle (2.2pt inset) ----
+	\draw[utblue, line width=0.4pt]
+	([xshift=2.2pt,yshift=-2.2pt]frame.north west) --
+	([xshift=-2.2pt,yshift=-2.2pt]frame.north east);
+	\draw[utblue, line width=0.4pt]
+	([xshift=-2.2pt,yshift=-2.2pt]frame.north east) --
+	([xshift=-2.2pt,yshift=2.2pt]frame.south east);
+	\draw[utblue, line width=0.4pt]
+	([xshift=-2.2pt,yshift=2.2pt]frame.south east) --
+	([xshift=2.2pt,yshift=2.2pt]frame.south west);
+	\draw[utblue, line width=0.4pt]
+	([xshift=2.2pt,yshift=2.2pt]frame.south west) --
+	([xshift=2.2pt,yshift=-2.2pt]frame.north west);
+}
 
+\tcbset{
+	proposalbox/.style={
+		breakable,
+		enhanced jigsaw,
+		frame empty,
+		colframe=white,
+		colback=white,
+		colbacktitle=tableblue,
+		coltitle=black,
+		fonttitle=\bfseries,
+		titlerule=1pt,
+		titlerule style={utblue},
+		left=16pt, right=16pt, top=14pt, bottom=14pt,
+		toptitle=5pt, bottomtitle=5pt,
+		valign=top,
+		width=17cm,          % ← عرض ۱۷ سانتی‌متر
+		sharp corners,
+		boxrule=0pt,
+		overlay unbroken={\drawproposalframe},
+		overlay first   ={\drawproposalframe},
+		overlay middle  ={\drawproposalframe},
+		overlay last    ={\drawproposalframe},
+	}
+}
+
+\newtcolorbox{contentbox}[2][]{
+	proposalbox,
+	title={#2},
+	#1,
+}
+
+% ============================================================
+% Page style
+% ============================================================
+\pagestyle{empty}
 
 % ============================================================
 % DOCUMENT
@@ -55,15 +117,10 @@ BoldItalicFont={XB NiloofarBdIt}
 	% PAGE 1
 	% ============================================================
 	
-	% ------------------------------------------------------------
-	% Outer decorative frame
-	% ------------------------------------------------------------
-	
 	\begin{tikzpicture}[remember picture,overlay]
-		
 		\draw[
 		color=utblue,
-		line width=1.5pt,
+		line width=1.9pt,
 		double=white,
 		double distance=1.5pt,
 		rounded corners=1.2cm
@@ -71,7 +128,6 @@ BoldItalicFont={XB NiloofarBdIt}
 		([xshift=2cm,yshift=-2cm]current page.north west)
 		rectangle
 		([xshift=-2cm,yshift=2cm]current page.south east);
-		
 	\end{tikzpicture}
 	
 	
@@ -79,12 +135,7 @@ BoldItalicFont={XB NiloofarBdIt}
 		
 		\vspace{-0.5cm}
 		
-		% --------------------------------------------------------
-		% Logos
-		% --------------------------------------------------------
-		
 		\begin{tabular}{m{3cm} m{6cm} m{3cm}}
-			
 			\centering
 			\includegraphics[width=2.5cm]{media/ut-logo.png}
 			&
@@ -93,135 +144,52 @@ BoldItalicFont={XB NiloofarBdIt}
 			&
 			\centering
 			\includegraphics[width=2.5cm]{media/fani-logo.png}
-			
 		\end{tabular}
 		
 		
 		\vspace{0.6cm}
 		
-		
-		% --------------------------------------------------------
-		% University titles
-		% --------------------------------------------------------
-		
 		{\large \textbf{دانشکده مهندسی برق و کامپیوتر}}
 		\\[0.3cm]
-		
 		{\large \textbf{پردیس دانشکده‌های فنی}}
 		\\[0.3cm]
-		
 		{\large \textbf{دانشگاه تهران}}
-		
 		
 		\vspace{1.2cm}
 		
-		
-		% --------------------------------------------------------
-		% Main title
-		% --------------------------------------------------------
-		
-		{\Large
-			\textbf{پیشنهاد و فرم حمایت از پایان‌نامه تحصیلات تکمیلی}
-		}
-		
+		{\Large \textbf{پیشنهاد و فرم حمایت از پایان‌نامه تحصیلات تکمیلی}}
 		
 		\vspace{1cm}
 		
-		
-		% --------------------------------------------------------
-		% Degree / study type
-		% --------------------------------------------------------
-		
 		\begin{tabular}{r l @{\hspace{2cm}} r l}
-			
-			دکتری \ \(\square\)
-			&
-			&
-			کارشناسی ارشد \ \(\blacksquare\)
-			&
-			\\[0.4cm]
-			
-			نوبت دوم \ \(\square\)
-			&
-			&
-			روزانه \ \(\blacksquare\)
-			&
-			\\
+			دکتری \ \(\square\) & & کارشناسی ارشد \ \(\square\) & \\[0.4cm]
+			نوبت دوم \ \(\square\) & & روزانه \ \(\square\) & \\
+			% \blacksquare  to fill
 			
 		\end{tabular}
 		
-		
 		\vspace{1.5cm}
-		
-		
-		% --------------------------------------------------------
-		% Student information
-		% --------------------------------------------------------
 		
 		\begin{tabular}{r l}
-			
-			\textbf{نام و نام خانوادگی:}
-			&
-			\makebox[5.5cm]{\dotfill}
-			\\
-			
-			\textbf{شماره دانشجویی:}
-			&
-			\makebox[5.5cm]{\dotfill}
-			\\
-			
-			\textbf{استاد راهنمای اول:}
-			&
-			\makebox[5.5cm]{\dotfill}
-			\\
-			
-			\textbf{تاریخ تصویب:}
-			&
-			\makebox[5.5cm]{\dotfill}
-			\\
-			
-			\textbf{امضا مدیر گروه:}
-			&
-			\makebox[5.5cm]{\dotfill}
-			
+			\textbf{نام و نام خانوادگی:} &  \makebox[5.5cm]{\dotfill} \\
+			\textbf{شماره دانشجویی:} & \makebox[5.5cm]{\dotfill} \\
+			\textbf{استاد راهنمای اول:} & \makebox[5.5cm]{\dotfill} \\
+			\textbf{تاریخ تصویب:} & \makebox[5.5cm]{\dotfill} \\
+			\textbf{امضا مدیر گروه:} & \makebox[5.5cm]{\dotfill} \\
 		\end{tabular}
-		
 		
 		\vspace{1.5cm}
 		
-		
-		% --------------------------------------------------------
-		% Graduate entry
-		% --------------------------------------------------------
-		
 		\begin{flushright}
-			
-			\hspace{2.5cm}
-			ورود به تحصیلات تکمیلی پردیس:
-			\makebox[4cm]{\dotfill}
-			
+			\hspace{2.5cm} ورود به تحصیلات تکمیلی پردیس:
 		\end{flushright}
-		
 		
 		\vspace{0.5cm}
 		
-		
-		% --------------------------------------------------------
-		% Reference number
-		% --------------------------------------------------------
-		
 		\begin{tabular}{r c c c c}
-			
-			\textbf{شماره مرجع:}
-			&
-			\fbox{\phantom{000}}
-			&
-			\fbox{\phantom{000}}
-			&
-			\fbox{\phantom{000}}
-			&
-			\fbox{\phantom{00000}}
-			
+			\textbf{شماره مرجع:} &
+			\fbox{\phantom{000}} & \fbox{\phantom{000}} &
+			\fbox{\phantom{000}} & \fbox{\phantom{00000}}
 		\end{tabular}
 		
 	\end{center}
@@ -229,276 +197,187 @@ BoldItalicFont={XB NiloofarBdIt}
 	
 	\vfill
 	
-	
-	% ------------------------------------------------------------
-	% Footer line
-	% ------------------------------------------------------------
-	
 	\begin{center}
-		
 		\color{utblue}
 		\rule{0.9\textwidth}{1.2pt}
-		
 	\end{center}
 	
-	
-	% ------------------------------------------------------------
-	% Notes
-	% ------------------------------------------------------------
-	
 	\begin{flushright}
-		
 		\small
-		
-		\begin{enumerate}[
-			label=\arabic*.,
-			leftmargin=1.5cm,
-			nosep,
-			itemsep=5pt
-			]
-			
-			\item
-			شماره مرجع، توسط معاونت پژوهشی پردیس دانشکده‌های فنی،
-			هنگام صدور ابلاغ، درج خواهد شد.
-			
-			\item
-			تکمیل
-			\underline{کلیه قسمت‌های فرم بصورت تایپ شده ضروری می‌باشد}
-			و در صورت ناقص بودن هر یک از موارد بدون هیچ اقدامی
-			پروپوزال ارسال شده عودت داده خواهد شد.
-			
+		\begin{enumerate}[label=\arabic*., leftmargin=1.5cm, nosep, itemsep=5pt]
+			\item شماره مرجع، توسط معاونت پژوهشی پردیس دانشکده‌های فنی، هنگام صدور ابلاغ، درج خواهد شد.
+			\item تکمیل \underline{کلیه قسمت‌های فرم بصورت تایپ شده ضروری می‌باشد} و در صورت ناقص بودن هر یک از موارد بدون هیچ اقدامی پروپوزال ارسال شده عودت داده خواهد شد.
 		\end{enumerate}
-		
 	\end{flushright}
-	
 	
 	\vspace{0.5cm}
 	
 	
-% ============================================================
-% PAGE 2
-% ============================================================
-
-\newpage
-
-{
-	\arrayrulecolor{utblue}
+	% ============================================================
+	% PAGE 2
+	% ============================================================
 	
-	% ------------------------------------------------------------
-	% Table settings
-	% ------------------------------------------------------------
+	\newpage
 	
-	\renewcommand{\arraystretch}{1.65}
-	\setlength{\tabcolsep}{2.5pt}
+	{
+		\arrayrulecolor{utblue}
+		
+		\renewcommand{\arraystretch}{1.65}
+		\setlength{\tabcolsep}{2.5pt}
+		\setlength{\arrayrulewidth}{0.7pt}
+		\setlength{\doublerulesep}{1.2pt}
+		
+		
+		\begin{center}
+			
+			{\normalsize \textbf{1- خلاصه‌ی اطلاعات پایان نامه}}
+			
+			\vspace{2mm}
+			
+			\begin{tabular}{
+					||>{\cellcolor{tableblue}\centering\arraybackslash}m{2.8cm}
+					|m{3.75cm}
+					|m{3.75cm}
+					|m{3.75cm}||
+				}
+				
+				\hline\hline
+				
+				عنوان (فارسی)
+				&
+				\multicolumn{3}{>{\centering\arraybackslash}p{11.25cm}||}{
+					\begin{RTL}
+						\centering 
+						%%%% type there
+					\end{RTL}
+				}
+				\tabularnewline
+				\hline
+				
+				عنوان (انگلیسی)
+				&
+				\multicolumn{3}{>{\centering\arraybackslash}p{11.25cm}||}{
+					\begin{LTR}
+						\centering
+						\small
+						%%%% type there
+					\end{LTR}
+				}
+				\tabularnewline
+				\hline
+				
+				
+				نوع
+				&
+				\centering $\square$ بنیادی
+				&
+				\centering \(\square\) کاربردی
+				&
+				\centering $\square$ توسعه‌ای
+				\tabularnewline
+				\hline\hline
+				
+			\end{tabular}
+			
+			
+			\vspace{6mm}
+			
+			{\normalsize \textbf{2- اطلاعات استاد راهنما و مشاور}}
+			
+			\vspace{2mm}
+			
+			\small
+			
+			\begin{tabular}{
+					||>{\centering\arraybackslash}m{3.15cm}
+					|>{\centering\arraybackslash}m{3.25cm}
+					|>{\centering\arraybackslash}m{2.0cm}
+					|>{\centering\arraybackslash}m{1.65cm}
+					|>{\centering\arraybackslash}m{1.9cm}
+					|>{\centering\arraybackslash}m{2.0cm}||
+				}
+				
+				\hline\hline
+				
+				\cellcolor{tableblue} نوع مسئولیت
+				&
+				\cellcolor{tableblue} نام و نام خانوادگی
+				&
+				\cellcolor{tableblue} مرتبه‌ی علمی
+				&
+				\cellcolor{tableblue} درصد مشارکت
+				&
+				\cellcolor{tableblue} محل خدمت
+				&
+				\cellcolor{tableblue} امضا و تاریخ
+				\tabularnewline
+				\hline
+				
+				استاد راهنمای اول (مجری)
+				& & \textcolor{utblue}{\underline{انتخاب نمایید}} & & &
+				\tabularnewline
+				\hline
+				
+				استاد راهنمای دوم (حسب نیاز)
+				& & \textcolor{utblue}{\underline{انتخاب نمایید}} & & &
+				\tabularnewline
+				\hline
+				
+				استاد مشاور اول
+				& & \textcolor{utblue}{\underline{انتخاب نمایید}} & & &
+				\tabularnewline
+				\hline
+				
+				استاد مشاور دوم (حسب نیاز)
+				& & \textcolor{utblue}{\underline{انتخاب نمایید}} & & &
+				\tabularnewline
+				\hline\hline
+				
+			\end{tabular}
+			
+			\normalsize
+			
+			\vspace{6mm}
+			
+			{\normalsize \textbf{3- اطلاعات دانشجو}}
+			
+			\vspace{2mm}
+			
+			\begin{tabular}{
+					||>{\cellcolor{tableblue}\centering\arraybackslash}m{3.25cm}
+					|m{4.0cm}
+					|>{\cellcolor{tableblue}\centering\arraybackslash}m{3.25cm}
+					|m{4.0cm}||
+				}
+				
+				\hline\hline
+				
+				نام و نام خانوادگی
+				& %% type 
+				& تلفن ثابت/همراه
+				& %% type 
+				\tabularnewline
+				\hline
+				
+				مقطع و نوع پذیرش
+				& %% type 
+				& آدرس ایمیل
+				& %% type 
+				\tabularnewline
+				\hline
+				
+				رشته و گرایش
+				& %% type 
+				& امضا و تاریخ
+				&
+				\tabularnewline
+				\hline\hline
+				
+			\end{tabular}
+			
+		\end{center}
+	}
 	
-	% Double-border settings
-	\setlength{\arrayrulewidth}{0.7pt}
-	\setlength{\doublerulesep}{1.2pt}
-	
-	
-	\begin{center}
-		
-		
-		% ============================================================
-		% SECTION 1
-		% ============================================================
-		
-		{\normalsize
-			\textbf{1- خلاصه‌ی اطلاعات}
-			\quad
-			\textcolor{utblue}{\underline{انتخاب نمایید}}
-		}
-		
-		\vspace{2mm}
-		
-		
-		% ------------------------------------------------------------
-		% Section 1 table
-		% ------------------------------------------------------------
-		
-		\begin{tabular}{
-				||>{\cellcolor{tableblue}\centering\arraybackslash}m{2.8cm}
-				|m{3.75cm}
-				|m{3.75cm}
-				|m{3.75cm}||
-			}
-			
-			\hline\hline
-			
-			عنوان (فارسی)
-			&
-			\multicolumn{3}{c||}{}
-			\tabularnewline
-			\hline
-			
-			عنوان (انگلیسی)
-			&
-			\multicolumn{3}{c||}{}
-			\tabularnewline
-			\hline
-			
-			نوع
-			&
-			\centering $\square$ بنیادی
-			&
-			\centering $\square$ کاربردی
-			&
-			\centering $\square$ توسعه‌ای
-			\tabularnewline
-			\hline\hline
-			
-		\end{tabular}
-		
-		
-		\vspace{6mm}
-		
-		
-		% ============================================================
-		% SECTION 2
-		% ============================================================
-		
-		{\normalsize
-			\textbf{2- اطلاعات استاد راهنما و مشاور}
-		}
-		
-		\vspace{2mm}
-		
-		\small
-		
-		
-		% ------------------------------------------------------------
-		% Section 2 table
-		% ------------------------------------------------------------
-		
-		\begin{tabular}{
-				||>{\centering\arraybackslash}m{3.15cm}
-				|>{\centering\arraybackslash}m{3.25cm}
-				|>{\centering\arraybackslash}m{2.0cm}
-				|>{\centering\arraybackslash}m{1.65cm}
-				|>{\centering\arraybackslash}m{1.9cm}
-				|>{\centering\arraybackslash}m{2.0cm}||
-			}
-			
-			\hline\hline
-			
-			\cellcolor{tableblue} نوع مسئولیت
-			&
-			\cellcolor{tableblue} نام و نام خانوادگی
-			&
-			\cellcolor{tableblue} مرتبه‌ی علمی
-			&
-			\cellcolor{tableblue} درصد مشارکت
-			&
-			\cellcolor{tableblue} محل خدمت
-			&
-			\cellcolor{tableblue} امضا و تاریخ
-			\tabularnewline
-			\hline
-			
-			استاد راهنمای اول (مجری)
-			&
-			&
-			\textcolor{utblue}{\underline{انتخاب نمایید}}
-			&
-			&
-			&
-			\tabularnewline
-			\hline
-			
-			استاد راهنمای دوم (حسب نیاز)
-			&
-			&
-			\textcolor{utblue}{\underline{انتخاب نمایید}}
-			&
-			&
-			&
-			\tabularnewline
-			\hline
-			
-			استاد مشاور اول
-			&
-			&
-			\textcolor{utblue}{\underline{انتخاب نمایید}}
-			&
-			&
-			&
-			\tabularnewline
-			\hline
-			
-			استاد مشاور دوم (حسب نیاز)
-			&
-			&
-			\textcolor{utblue}{\underline{انتخاب نمایید}}
-			&
-			&
-			&
-			\tabularnewline
-			\hline\hline
-			
-		\end{tabular}
-		
-		\normalsize
-		
-		
-		\vspace{6mm}
-		
-		
-		% ============================================================
-		% SECTION 3
-		% ============================================================
-		
-		{\normalsize
-			\textbf{3- اطلاعات دانشجو}
-		}
-		
-		\vspace{2mm}
-		
-		
-		% ------------------------------------------------------------
-		% Section 3 table
-		% ------------------------------------------------------------
-		
-		\begin{tabular}{
-				||>{\cellcolor{tableblue}\centering\arraybackslash}m{3.25cm}
-				|m{4.0cm}
-				|>{\cellcolor{tableblue}\centering\arraybackslash}m{3.25cm}
-				|m{4.0cm}||
-			}
-			
-			\hline\hline
-			
-			نام و نام خانوادگی
-			&
-			&
-			تلفن ثابت/همراه
-			&
-			\tabularnewline
-			\hline
-			
-			مقطع و نوع پذیرش
-			&
-			\centering
-			\textcolor{utblue}{\underline{انتخاب نمایید}}
-			&
-			آدرس ایمیل
-			&
-			\tabularnewline
-			\hline
-			
-			رشته و گرایش
-			&
-			&
-			امضا و تاریخ
-			&
-			\tabularnewline
-			\hline\hline
-			
-		\end{tabular}
-		
-		
-	\end{center}
-	
-}
 	
 	% ============================================================
 	% PAGE 3
@@ -506,83 +385,18 @@ BoldItalicFont={XB NiloofarBdIt}
 	
 	\newpage
 	
-	\begin{center}
-		
-		\vspace{0.5cm}
-		
-		
-		% ------------------------------------------------------------
-		% Main section title
-		% ------------------------------------------------------------
-		
-		{\large
-			\textbf{
-				۴- مشخصات موضوعی
-				\textcolor{utblue}{\underline{انتخاب نمایید}}
-			}
-		}
-		
-		\vspace{0.5cm}
-		
-		
-		% ------------------------------------------------------------
-		% Box 4-1
-		% ------------------------------------------------------------
-		
-		\begin{tikzpicture}
-			
-			\def\W{14.5}
-			\def\H{16}
-			\def\HH{0.9}
-			
-			
-			% Main box
-			\draw[
-			color=utblue,
-			line width=1pt,
-			double=white,
-			double distance=1pt
-			]
-			(0,0) rectangle (\W,\H);
-			
-			
-			% Header background
-			\fill[tableblue]
-			(0.05,\H-\HH+0.05)
-			rectangle
-			(\W-0.05,\H-0.05);
-			
-			
-			% Header separator
-			\draw[
-			color=utblue,
-			line width=1pt
-			]
-			(0,\H-\HH)
-			--
-			(\W,\H-\HH);
-			
-			
-			% Header text
-			\node[
-			anchor=east,
-			inner sep=0pt,
-			text width=13.8cm,
-			align=right
-			]
-			at (\W-0.2,\H-\HH/2)
-			{%
-				\begin{RTL}
-					\textbf{
-						۴-۱ تعریف مساله، هدف و ضرورت انجام
-						(حداکثر سه صفحه)
-					}
-				\end{RTL}
-			};
-			
-		\end{tikzpicture}
-		
-	\end{center}
+	\vspace{0.5cm}%
+	{\centering\large\textbf{۴- مشخصات موضوعی پایان‌نامه}\par}%
+	\vspace{0.5cm}%
+	
+	\begingroup
+	\setlength{\leftskip}{-0.5cm}
+	\setlength{\rightskip}{-0.5cm}
+	\begin{contentbox}[halign title=flush right]
+		{۴-۱ تعریف مسئله، هدف و ضرورت انجام (حداکثر سه صفحه)}
+		\input{section/section4_1}
+	\end{contentbox}
+	\endgroup
 	
 	
 	% ============================================================
@@ -591,127 +405,55 @@ BoldItalicFont={XB NiloofarBdIt}
 	
 	\newpage
 	
-	\begin{center}
-		
-		\vspace{0.4cm}
-		
-		
-		% ------------------------------------------------------------
-		% Box 4-2
-		% ------------------------------------------------------------
-		
-		\begin{tikzpicture}
-			
-			\def\W{14.5}
-			\def\H{7.0}
-			\def\HH{0.85}
-			
-			
-			% Main box
-			\draw[
-			color=utblue,
-			line width=0.9pt,
-			double=white,
-			double distance=1pt
-			]
-			(0,0) rectangle (\W,\H);
-			
-			
-			% Header background
-			\fill[tableblue]
-			(0.05,\H-\HH+0.05)
-			rectangle
-			(\W-0.05,\H-0.05);
-			
-			
-			% Separator
-			\draw[
-			color=utblue,
-			line width=0.9pt
-			]
-			(0,\H-\HH)
-			--
-			(\W,\H-\HH);
-			
-			
-			% Header
-			\node[
-			font=\bfseries,
-			anchor=center,
-			inner sep=0pt,
-			text width=13.8cm,
-			align=center
-			]
-			at (\W/2,\H-\HH/2)
-			{%
-				\begin{RTL}
-					۴-۲ روش و فنون اجرایی
-				\end{RTL}
-			};
-			
-		\end{tikzpicture}
-		
-		
-		\vspace{0.9cm}
-		
-		
-		% ------------------------------------------------------------
-		% Box 4-3
-		% ------------------------------------------------------------
-		
-		\begin{tikzpicture}
-			
-			\def\W{14.5}
-			\def\H{7.0}
-			\def\HH{0.85}
-			
-			
-			% Main box
-			\draw[
-			color=utblue,
-			line width=0.9pt,
-			double=white,
-			double distance=1pt
-			]
-			(0,0) rectangle (\W,\H);
-			
-			
-			% Header background
-			\fill[tableblue]
-			(0.05,\H-\HH+0.05)
-			rectangle
-			(\W-0.05,\H-0.05);
-			
-			
-			% Separator
-			\draw[
-			color=utblue,
-			line width=0.9pt
-			]
-			(0,\H-\HH)
-			--
-			(\W,\H-\HH);
-			
-			
-			% Header
-			\node[
-			font=\bfseries,
-			anchor=center,
-			inner sep=0pt,
-			text width=13.8cm,
-			align=center
-			]
-			at (\W/2,\H-\HH/2)
-			{%
-				\begin{RTL}
-					۴-۳ پیشینه پژوهش
-					(همراه با ذکر منابع اساسی)
-				\end{RTL}
-			};
-			
-		\end{tikzpicture}
-		
-	\end{center}
+	\begingroup
+	\setlength{\leftskip}{-0.5cm}
+	\setlength{\rightskip}{-0.5cm}
+	\begin{contentbox}
+		{۴-۲ روش و فنون اجرایی}
+		%\setcounter{subsection}{0}
+		\input{section/section4_2}
+		\vspace*{5.5cm}
+	\end{contentbox}
+	\endgroup
+	
+	\vspace{0.9cm}
+	
+	
+	% ============================================================
+	% PAGE 5
+	% ============================================================
+	
+	\newpage
+	
+	\begingroup
+	\setlength{\leftskip}{-0.5cm}
+	\setlength{\rightskip}{-0.5cm}
+	\begin{contentbox}
+		{۴-۳ پیشینهٔ پژوهش (همراه با ذکر منابع اساسی)}
+		\setcounter{subsection}{0}
+		\vspace*{5.5cm}
+	\end{contentbox}
+	\endgroup
+	
+	\vspace{0.9cm}
+	
+	
+	% ============================================================
+	% PAGE 6
+	% ============================================================
+	
+	\newpage
+	
+	\begingroup
+	\setlength{\leftskip}{-0.5cm}
+	\setlength{\rightskip}{-0.5cm}
+	\begin{contentbox}
+		{منابع}
+		\renewcommand{\refname}{}
+		\bibliographystyle{unsrt}
+		\lr{\bibliography{ref}}
+	\end{contentbox}
+	\endgroup
 	
 	
 	% ============================================================
@@ -722,167 +464,43 @@ BoldItalicFont={XB NiloofarBdIt}
 	
 	\begin{center}
 		
-		
-		% ============================================================
-		% FINAL FORM 1
-		% ============================================================
-		
 		\begin{tikzpicture}
-			
-			% --------------------------------------------------------
-			% Dimensions
-			% --------------------------------------------------------
 			
 			\def\W{15.8}
 			\def\H{8.15}
 			\def\HeaderH{1.55}
-			
 			\def\LeftCol{4.6}
 			\def\LabelCol{3.25}
 			
-			
-			% ========================================================
-			% Main frame
-			% ========================================================
-			
-			\draw[
-			color=utblue,
-			line width=1pt,
-			double=white,
-			double distance=1.5pt
-			]
+			\draw[color=utblue, line width=1pt, double=white, double distance=1.5pt]
 			(0,0) rectangle (\W,\H);
 			
+			\draw[color=utblue, line width=0.8pt] (0,\H-\HeaderH) -- (\W,\H-\HeaderH);
+			\draw[color=utblue, line width=0.8pt] (\LeftCol,\H) -- (\LeftCol,\H-\HeaderH);
+			\draw[color=utblue, line width=0.8pt] (\LabelCol,\H) -- (\LabelCol,\H-\HeaderH);
+			\draw[color=utblue, line width=0.8pt] (0,\H-\HeaderH/2) -- (\LeftCol,\H-\HeaderH/2);
 			
-			% ========================================================
-			% Header lines
-			% ========================================================
+			\fill[tableblue] (\LabelCol+0.03,\H-\HeaderH/2+0.03) rectangle (\LeftCol-0.03,\H-0.03);
+			\fill[tableblue] (\LabelCol+0.03,\H-\HeaderH+0.03) rectangle (\LeftCol-0.03,\H-\HeaderH/2-0.03);
 			
-			\draw[
-			color=utblue,
-			line width=0.8pt
-			]
-			(0,\H-\HeaderH)
-			--
-			(\W,\H-\HeaderH);
-			
-			
-			\draw[
-			color=utblue,
-			line width=0.8pt
-			]
-			(\LeftCol,\H)
-			--
-			(\LeftCol,\H-\HeaderH);
-			
-			
-			\draw[
-			color=utblue,
-			line width=0.8pt
-			]
-			(\LabelCol,\H)
-			--
-			(\LabelCol,\H-\HeaderH);
-			
-			
-			\draw[
-			color=utblue,
-			line width=0.8pt
-			]
-			(0,\H-\HeaderH/2)
-			--
-			(\LeftCol,\H-\HeaderH/2);
-			
-			
-			% ========================================================
-			% Header cells background
-			% ========================================================
-			
-			\fill[tableblue]
-			(\LabelCol+0.03,\H-\HeaderH/2+0.03)
-			rectangle
-			(\LeftCol-0.03,\H-0.03);
-			
-			
-			\fill[tableblue]
-			(\LabelCol+0.03,\H-\HeaderH+0.03)
-			rectangle
-			(\LeftCol-0.03,\H-\HeaderH/2-0.03);
-			
-			
-			% ========================================================
-			% Header title
-			% ========================================================
-			
-			\node[
-			font=\small,
-			anchor=center,
-			inner sep=0pt,
-			text width=10.5cm,
-			align=center
-			]
+			\node[font=\small, anchor=center, inner sep=0pt, text width=10.5cm, align=center]
 			at ({(\LeftCol+\W)/2},{\H-\HeaderH/2})
-			{%
-				\begin{RTL}
-					معاون محترم آموزشی و تحصیلات تکمیلی پردیس دانشکده‌های فنی
-				\end{RTL}
-			};
+			{\begin{RTL} معاون محترم آموزشی و تحصیلات تکمیلی پردیس دانشکده‌های فنی \end{RTL}};
 			
+			\node[font=\small, anchor=center, inner sep=0pt]
+			at ({(\LabelCol+\LeftCol)/2},{\H-0.39}) {\begin{RTL} شماره: \end{RTL}};
 			
-			% ========================================================
-			% شماره
-			% ========================================================
+			\node[font=\small, anchor=center, inner sep=0pt]
+			at ({(\LabelCol+\LeftCol)/2},{\H-1.16}) {\begin{RTL} تاریخ: \end{RTL}};
 			
-			\node[
-			font=\small,
-			anchor=center,
-			inner sep=0pt
-			]
-			at ({(\LabelCol+\LeftCol)/2},{\H-0.39})
-			{%
-				\begin{RTL}
-					شماره:
-				\end{RTL}
-			};
-			
-			
-			% ========================================================
-			% تاریخ
-			% ========================================================
-			
-			\node[
-			font=\small,
-			anchor=center,
-			inner sep=0pt
-			]
-			at ({(\LabelCol+\LeftCol)/2},{\H-1.16})
-			{%
-				\begin{RTL}
-					تاریخ:
-				\end{RTL}
-			};
-			
-			
-			% ========================================================
-			% Main text
-			% ========================================================
-			
-			\node[
-			anchor=north east,
-			inner sep=0pt,
-			text width=14.65cm,
-			align=right
-			]
+			\node[anchor=north east, inner sep=0pt, text width=14.65cm, align=right]
 			at (\W-0.3,\H-\HeaderH-0.32)
 			{%
 				\begin{RTL}
-					
 					\setlength{\baselineskip}{0.62cm}
 					\setlength{\parskip}{0.12cm}
-					
 					{\small
-						
-						با سلام و احترام،
+						با سلام و احترام,
 						
 						\vspace{0.08cm}
 						
@@ -900,8 +518,7 @@ BoldItalicFont={XB NiloofarBdIt}
 						
 						\vspace{0.08cm}
 						
-						در تاریخ
-						\dotfill
+						در تاریخ \dotfill
 						در شورای پژوهشی و تحصیلات تکمیلی
 						\textcolor{utblue}{\underline{انتخاب نمایید}}
 						به تصویب رسید.
@@ -909,299 +526,84 @@ BoldItalicFont={XB NiloofarBdIt}
 						\vspace{0.08cm}
 						
 						خواهشمند است دستور فرمایید اقدامات لازم انجام شود.
-						
 					}
-					
 				\end{RTL}
 			};
 			
-			
-			% ========================================================
-			% Signature
-			% ========================================================
-			
-			\node[
-			font=\small,
-			anchor=center,
-			inner sep=0pt,
-			text width=8.5cm,
-			align=center
-			]
+			\node[font=\small, anchor=center, inner sep=0pt, text width=8.5cm, align=center]
 			at ({\W/2},1.02)
-			{%
-				\begin{RTL}
-					معاون پژوهشی و تحصیلات تکمیلی
-					\textcolor{utblue}{\underline{انتخاب نمایید}}
-				\end{RTL}
-			};
+			{\begin{RTL} معاون پژوهشی و تحصیلات تکمیلی \textcolor{utblue}{\underline{انتخاب نمایید}} \end{RTL}};
 			
+			\node[font=\small, anchor=east, inner sep=0pt]
+			at (\W-4.7,0.57) {\begin{RTL} امضا: \end{RTL}};
 			
-			% ========================================================
-			% Signature / date
-			% ========================================================
-			
-			\node[
-			font=\small,
-			anchor=east,
-			inner sep=0pt
-			]
-			at (\W-4.7,0.57)
-			{%
-				\begin{RTL}
-					امضا:
-				\end{RTL}
-			};
-			
-			
-			\node[
-			font=\small,
-			anchor=east,
-			inner sep=0pt
-			]
-			at (\W-4.7,0.22)
-			{%
-				\begin{RTL}
-					تاریخ:
-				\end{RTL}
-			};
+			\node[font=\small, anchor=east, inner sep=0pt]
+			at (\W-4.7,0.22) {\begin{RTL} تاریخ: \end{RTL}};
 			
 		\end{tikzpicture}
 		
 		
-		% ============================================================
-		% Space between final forms
-		% ============================================================
-		
 		\vspace{1.15cm}
 		
 		
-		% ============================================================
-		% FINAL FORM 2
-		% ============================================================
-		
 		\begin{tikzpicture}
-			
-			% --------------------------------------------------------
-			% Dimensions
-			% --------------------------------------------------------
 			
 			\def\W{15.8}
 			\def\H{8.15}
 			\def\HeaderH{1.55}
-			
 			\def\LeftCol{4.6}
 			\def\LabelCol{3.25}
 			
-			
-			% ========================================================
-			% Main frame
-			% ========================================================
-			
-			\draw[
-			color=utblue,
-			line width=1pt,
-			double=white,
-			double distance=1.5pt
-			]
+			\draw[color=utblue, line width=1pt, double=white, double distance=1.5pt]
 			(0,0) rectangle (\W,\H);
 			
+			\draw[color=utblue, line width=0.8pt] (0,\H-\HeaderH) -- (\W,\H-\HeaderH);
+			\draw[color=utblue, line width=0.8pt] (\LeftCol,\H) -- (\LeftCol,\H-\HeaderH);
+			\draw[color=utblue, line width=0.8pt] (\LabelCol,\H) -- (\LabelCol,\H-\HeaderH);
+			\draw[color=utblue, line width=0.8pt] (0,\H-\HeaderH/2) -- (\LeftCol,\H-\HeaderH/2);
 			
-			% ========================================================
-			% Header lines
-			% ========================================================
+			\fill[tableblue] (\LabelCol+0.03,\H-\HeaderH/2+0.03) rectangle (\LeftCol-0.03,\H-0.03);
+			\fill[tableblue] (\LabelCol+0.03,\H-\HeaderH+0.03) rectangle (\LeftCol-0.03,\H-\HeaderH/2-0.03);
 			
-			\draw[
-			color=utblue,
-			line width=0.8pt
-			]
-			(0,\H-\HeaderH)
-			--
-			(\W,\H-\HeaderH);
-			
-			
-			\draw[
-			color=utblue,
-			line width=0.8pt
-			]
-			(\LeftCol,\H)
-			--
-			(\LeftCol,\H-\HeaderH);
-			
-			
-			\draw[
-			color=utblue,
-			line width=0.8pt
-			]
-			(\LabelCol,\H)
-			--
-			(\LabelCol,\H-\HeaderH);
-			
-			
-			\draw[
-			color=utblue,
-			line width=0.8pt
-			]
-			(0,\H-\HeaderH/2)
-			--
-			(\LeftCol,\H-\HeaderH/2);
-			
-			
-			% ========================================================
-			% Header cells background
-			% ========================================================
-			
-			\fill[tableblue]
-			(\LabelCol+0.03,\H-\HeaderH/2+0.03)
-			rectangle
-			(\LeftCol-0.03,\H-0.03);
-			
-			
-			\fill[tableblue]
-			(\LabelCol+0.03,\H-\HeaderH+0.03)
-			rectangle
-			(\LeftCol-0.03,\H-\HeaderH/2-0.03);
-			
-			
-			% ========================================================
-			% Header title
-			% ========================================================
-			
-			\node[
-			font=\small,
-			anchor=center,
-			inner sep=0pt,
-			text width=10.5cm,
-			align=center
-			]
+			\node[font=\small, anchor=center, inner sep=0pt, text width=10.5cm, align=center]
 			at ({(\LeftCol+\W)/2},{\H-\HeaderH/2})
-			{%
-				\begin{RTL}
-					معاون محترم پژوهشی پردیس دانشکده‌های فنی
-				\end{RTL}
-			};
+			{\begin{RTL} معاون محترم پژوهشی پردیس دانشکده‌های فنی \end{RTL}};
 			
+			\node[font=\small, anchor=center, inner sep=0pt]
+			at ({(\LabelCol+\LeftCol)/2},{\H-0.39}) {\begin{RTL} شماره: \end{RTL}};
 			
-			% ========================================================
-			% شماره
-			% ========================================================
+			\node[font=\small, anchor=center, inner sep=0pt]
+			at ({(\LabelCol+\LeftCol)/2},{\H-1.16}) {\begin{RTL} تاریخ: \end{RTL}};
 			
-			\node[
-			font=\small,
-			anchor=center,
-			inner sep=0pt
-			]
-			at ({(\LabelCol+\LeftCol)/2},{\H-0.39})
-			{%
-				\begin{RTL}
-					شماره:
-				\end{RTL}
-			};
-			
-			
-			% ========================================================
-			% تاریخ
-			% ========================================================
-			
-			\node[
-			font=\small,
-			anchor=center,
-			inner sep=0pt
-			]
-			at ({(\LabelCol+\LeftCol)/2},{\H-1.16})
-			{%
-				\begin{RTL}
-					تاریخ:
-				\end{RTL}
-			};
-			
-			
-			% ========================================================
-			% Main text
-			% ========================================================
-			
-			\node[
-			anchor=north east,
-			inner sep=0pt,
-			text width=14.65cm,
-			align=right
-			]
+			\node[anchor=north east, inner sep=0pt, text width=14.65cm, align=right]
 			at (\W-0.3,\H-\HeaderH-0.32)
 			{%
 				\begin{RTL}
-					
 					\setlength{\baselineskip}{0.68cm}
 					\setlength{\parskip}{0.12cm}
-					
 					{\small
-						
 						به پیوست، فرم پیشنهاد و حمایت از
 						\textcolor{utblue}{\underline{انتخاب نمایید}}
 						تحصیلات تکمیلی به همراه مشخصات آن،
 						که به تصویب شورای پژوهشی تحصیلات تکمیلی
 						\textcolor{utblue}{\underline{انتخاب نمایید}}
 						رسیده است جهت اقدام مقتضی تقدیم می‌شود.
-						
 					}
-					
 				\end{RTL}
 			};
 			
-			
-			% ========================================================
-			% Signature
-			% ========================================================
-			
-			\node[
-			font=\small,
-			anchor=center,
-			inner sep=0pt,
-			text width=10cm,
-			align=center
-			]
+			\node[font=\small, anchor=center, inner sep=0pt, text width=10cm, align=center]
 			at ({\W/2},1.25)
-			{%
-				\begin{RTL}
-					معاون آموزشی و تحصیلات تکمیلی پردیس دانشکده‌های فنی
-				\end{RTL}
-			};
+			{\begin{RTL} معاون آموزشی و تحصیلات تکمیلی پردیس دانشکده‌های فنی \end{RTL}};
 			
+			\node[font=\small, anchor=east, inner sep=0pt]
+			at (\W-4.7,0.68) {\begin{RTL} امضا: \end{RTL}};
 			
-			% ========================================================
-			% Signature / date
-			% ========================================================
-			
-			\node[
-			font=\small,
-			anchor=east,
-			inner sep=0pt
-			]
-			at (\W-4.7,0.68)
-			{%
-				\begin{RTL}
-					امضا:
-				\end{RTL}
-			};
-			
-			
-			\node[
-			font=\small,
-			anchor=east,
-			inner sep=0pt
-			]
-			at (\W-4.7,0.27)
-			{%
-				\begin{RTL}
-					تاریخ:
-				\end{RTL}
-			};
+			\node[font=\small, anchor=east, inner sep=0pt]
+			at (\W-4.7,0.27) {\begin{RTL} تاریخ: \end{RTL}};
 			
 		\end{tikzpicture}
 		
 	\end{center}
-	
-	
-	% ============================================================
-	% END
-	% ============================================================
 	
 \end{document}

@@ -1,0 +1,559 @@
+% ============================================================
+% FOUNDATIONAL REFERENCES (kept)
+% ============================================================
+
+@inproceedings{wei2022cot,
+	title={Chain-of-Thought Prompting Elicits Reasoning in Large Language Models},
+	author={Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and Ichter, Brian and Xia, Fei and Chi, Ed and Le, Quoc V and Zhou, Denny},
+	booktitle={NeurIPS},
+	year={2022}
+}
+
+@inproceedings{kojima2022zeroshot,
+	title={Large Language Models are Zero-Shot Reasoners},
+	author={Kojima, Takeshi and Gu, Shixiang Shane and Reid, Machel and Matsuo, Yutaka and Iwasawa, Yusuke},
+	booktitle={NeurIPS},
+	year={2022}
+}
+
+@article{kaplan2020scaling,
+	title={Scaling Laws for Neural Language Models},
+	author={Kaplan, Jared and McCandlish, Sam and Henighan, Tom and Brown, Tom B. and Chess, Benjamin and Child, Rewon and Gray, Scott and Radford, Alec and Amodei, Dario},
+	journal={arXiv preprint arXiv:2001.08361},
+	year={2020}
+}
+
+@article{hoffmann2022chinchilla,
+	title={Training Compute-Optimal Large Language Models},
+	author={Hoffmann, Jordan and Borgeaud, Sebastian and Menuet, Arthur and Buchatskaya, Elena},
+	journal={arXiv preprint arXiv:2203.15556},
+	year={2022}
+}
+
+@inproceedings{wang2023sc,
+	title={Self-Consistency Improves Chain of Thought Reasoning in Language Models},
+	author={Wang, Xuezhi and Wei, Jason and Schuurmans, Dale and Le, Quoc and Chi, Ed and Narang, Sharan and Chowdhery, Aakanksha and Zhou, Denny},
+	booktitle={ICLR},
+	year={2023}
+}
+
+@article{yao2023tot,
+	title={Tree of Thoughts: Deliberate Problem Solving with Large Language Models},
+	author={Yao, Shunyu and Yu, Dian and Zhao, Jeffrey and Shafran, Izhak and Griffiths, Thomas L. and Cao, Yuan and Narasimhan, Karthik},
+	journal={NeurIPS},
+	year={2023}
+}
+
+@article{schulman2017ppo,
+	title={Proximal Policy Optimization Algorithms},
+	author={Schulman, John and Wolski, Filip and Dhariwal, Prafulla and Radford, Alec and Klimov, Oleg},
+	journal={arXiv preprint arXiv:1707.06347},
+	year={2017}
+}
+
+@inproceedings{rafailov2023dpo,
+	title={Direct Preference Optimization: Your Language Model is Secretly a Reward Model},
+	author={Rafailov, Rafael and Sharma, Archit and Mitchell, Eric and Manning, Christopher D. and Ermon, Stefano and Finn, Chelsea},
+	booktitle={NeurIPS},
+	year={2023}
+}
+
+@article{cobbe2021gsm8k,
+	title={Training Verifiers to Solve Math Word Problems},
+	author={Cobbe, Karl and Kosaraju, Vineet and Bavarian, Mohammad and Chen, Mark and Jun, Heewoo and Kaiser, Lukasz and Plappert, Matthias and Tworek, Jerry and Hilton, Jacob and Nakano, Reiichiro and others},
+	journal={arXiv preprint arXiv:2110.14168},
+	year={2021}
+}
+
+@inproceedings{hendrycks2021math,
+	title={Measuring Mathematical Problem Solving With the MATH Dataset},
+	author={Hendrycks, Dan and Burns, Collin and Kadavath, Saurav and Arora, Akul and Basart, Steven and Tang, Eric and Song, Dawn and Steinhardt, Jacob},
+	booktitle={NeurIPS},
+	year={2021}
+}
+
+@inproceedings{hendrycks2020mmlu,
+	title={Measuring Massive Multitask Language Understanding},
+	author={Hendrycks, Dan and Burns, Collin and Basart, Steven and Zou, Andy and Mazeika, Mantas and Song, Dawn and Steinhardt, Jacob},
+	booktitle={ICLR},
+	year={2021}
+}
+
+@inproceedings{suzgun2022bbh,
+	title={Challenging BIG-Bench Tasks and Whether Chain-of-Thought Can Solve Them},
+	author={Suzgun, Mirac and Scales, Nathan and Sch{\"a}rli, Nathanael and Gehrmann, Sebastian and Tay, Yi and Chung, Hyung Won and Chowdhery, Aakanksha and Le, Quoc V and Chi, Ed and Zhou, Denny and Wei, Jason},
+	booktitle={ACL Findings},
+	year={2023}
+}
+
+@inproceedings{chen2021humaneval,
+	title={Evaluating Large Language Models Trained on Code},
+	author={Chen, Mark and Tworek, Jerry and Jun, Heewoo and Yuan, Qiming and Pinto, Henrique Ponde de Oliveira and Kaplan, Jared and Edwards, Harri and Burda, Yuri and Joseph, Nicholas and Brockman, Greg and others},
+	booktitle={arXiv preprint arXiv:2107.03374},
+	year={2021}
+}
+
+@inproceedings{austin2021mbpp,
+	title={Program Synthesis with Large Language Models},
+	author={Austin, Jacob and Odena, Augustus and Nye, Maxwell and Bosma, Maarten and Michalewski, Henryk and Dohan, David and Jiang, Ellen and Cai, Carrie and Terry, Michael and Le, Quoc and others},
+	journal={arXiv preprint arXiv:2108.07732},
+	year={2021}
+}
+
+@article{hu2021lora,
+	title={Lo{RA}: Low-Rank Adaptation of Large Language Models},
+	author={Hu, Edward J. and Shen, Yelong and Wallis, Phillip and Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and Wang, Lu and Chen, Weizhu},
+	journal={arXiv preprint arXiv:2106.09685},
+	year={2021}
+}
+
+@inproceedings{dettmers2023qlora,
+	title={{QLoRA}: Efficient Finetuning of Quantized Language Models},
+	author={Dettmers, Tim and Pagnoni, Artidoro and Holtzman, Ari and Zettlemoyer, Luke},
+	booktitle={NeurIPS},
+	year={2023}
+}
+
+@inproceedings{frantar2022gptq,
+	title={{GPTQ}: Accurate Post-Training Quantization for Generative Pre-trained Transformers},
+	author={Frantar, Elias and Ashkboos, Saleh and Hoefler, Torsten and Alistarh, Dan},
+	booktitle={ICLR},
+	year={2023}
+}
+
+@inproceedings{lin2023awq,
+	title={{AWQ}: Activation-aware Weight Quantization for {LLM} Compression and Acceleration},
+	author={Lin, Ji and Tang, Jiaming and Tang, Haotian and Yang, Shang and Dang, Xingyu and Han, Song},
+	booktitle={MLSys},
+	year={2024}
+}
+
+@inproceedings{kwon2023vllm,
+	title={Efficient Memory Management for Large Language Model Serving with {PagedAttention}},
+	author={Kwon, Woosuk and Li, Zhuohan and Zhuang, Siyuan and Sheng, Ying and Zheng, Lianmin and Yu, Cody Hao and Gonzalez, Joseph E. and Zhang, Hao and Stoica, Ion},
+	booktitle={SOSP},
+	year={2023}
+}
+
+@article{leviathan2022speculative,
+	title={Fast Inference from Transformers via Speculative Decoding},
+	author={Leviathan, Yaniv and Arar, Matan and Price, Boaz},
+	journal={arXiv preprint arXiv:2211.17192},
+	year={2022}
+}
+
+@article{gao2023pal,
+	title={{PAL}: Program-aided Language Models},
+	author={Gao, Luyu and Madaan, Aman and Zhou, Shuyan and Alon, Uri and Liu, Pengfei and Wang, Yiming and Yang, Jiming and Bisk, Yonatan and Mao, Ruirui and others},
+	journal={arXiv preprint arXiv:2211.10435},
+	year={2023}
+}
+
+@article{zhou2023leasttommost,
+	title={Least-to-Most Prompting Enables Complex Reasoning in Large Language Models},
+	author={Zhou, Denny and Sch{\"a}rli, Nathanael and Hou, Le and Wei, Jason and Scales, Nathan and Wang, Xuezhi and Schuurmans, Dale and Bousquet, Olivier and Le, Quoc V and Chi, Ed},
+	journal={arXiv preprint arXiv:2205.10625},
+	year={2023}
+}
+
+@article{madaan2023selfrefine,
+	title={Self-Refine: Iterative Refinement with Self-Feedback},
+	author={Madaan, Aman and Tandon, Niket and Gupta, Prakhar and Hallinan, Skyler and Gao, Luyu and Wiegrebe, Sarah and Alon, Uri and Dziri, Nouha and Peng, Simon and others},
+	journal={NeurIPS},
+	year={2023}
+}
+
+@article{shinn2023reflexion,
+	title={Reflexion: Language Agents with Verbal Reinforcement Learning},
+	author={Shinn, Noah and Cassano, Federico and Gopinath, Ashwin and Narasimhan, Karthik and Yao, Shunyu},
+	booktitle={NeurIPS},
+	year={2023}
+}
+
+@article{besta2024got,
+	title={Graph of Thoughts: Solving Elaborate Problems with Large Language Models},
+	author={Besta, Maciej and Blach, Nils and Kubicek, Ales and Gerber, Robert and Uebing, Matthias and Walder, Hubert and Gysi, Giovanni and Berente, Norbert and Hoefler, Torsten},
+	journal={AAAI},
+	year={2024}
+}
+
+@article{yao2023react,
+	title={ReAct: Synergizing Reasoning and Acting in Language Models},
+	author={Yao, Shunyu and Zhao, Jeffrey and Yu, Dian and Du, Nan and Shafran, Izhak and Narasimhan, Karthik and Cao, Yuan},
+	journal={arXiv preprint arXiv:2210.03629},
+	year={2023}
+}
+
+@article{brown2024monkeys,
+	title={Large Language Monkeys: Scaling Inference Compute with Repeated Sampling},
+	author={Brown, Bradley and Jurafsky, Dan and Goodman, Noah and Le, Quoc V. and others},
+	journal={arXiv preprint arXiv:2407.21787},
+	year={2024}
+}
+
+@inproceedings{snell2024testtimescaling,
+	title={Scaling {LLM} Test-Time Compute Optimally can be More Effective than Scaling Model Parameters},
+	author={Snell, Charlie and Lee, Jaehoon and Zheng, Kelvin and Sener, Ozan},
+	booktitle={arXiv preprint arXiv:2408.03314},
+	year={2024}
+}
+
+@article{turpin2023unfaithful,
+	title={Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting},
+	author={Turpin, Miles and Michael, Julian and Perez, Ethan and Bowman, Samuel R.},
+	journal={NeurIPS},
+	year={2023}
+}
+
+@article{dziri2023faithfate,
+	title={The Faith and Fate of Chain-of-Thought Transformers},
+	author={Dziri, Nouha and Milton, Ximing Lu and Yu, M and others},
+	journal={NeurIPS},
+	year={2023}
+}
+
+@article{wu2023reasoningorreciting,
+	title={Reasoning or Reciting? Exploring the Limits and Failures in {AI} Tracing},
+	author={Wu, Yixuan and others},
+	journal={arXiv preprint arXiv:2310.08036},
+	year={2023}
+}
+
+@article{mirzadeh2024gsmsymbolic,
+	title={{GSM-Symbolic}: Understanding the Limitations of Mathematical Reasoning in Large Language Models},
+	author={Mirzadeh, Iman and Alizadeh, Keivan and Shahbaba, Hooman and Farajtabar, Mehrdad and Dong, Hongfei and Ghasemzadeh, Hassan and others},
+	journal={arXiv preprint arXiv:2410.05229},
+	year={2024}
+}
+
+@article{chen2024premise,
+	title={The Impact of Reasoning Step Length on Large Language Models},
+	author={Chen, Minghao and others},
+	journal={arXiv preprint arXiv:2401.04925},
+	year={2024}
+}
+
+@article{chen2024overthinking,
+	title={Do NOT Think That Much for 2+3=? On the Overthinking of o1-Like LLMs},
+	author={Chen, Xingyu and others},
+	journal={arXiv preprint arXiv:2412.21187},
+	year={2024}
+}
+
+@article{lightman2023verify,
+	title={Let's Verify Step by Step},
+	author={Lightman, Hunter and Kosaraju, Vineet and Burda, Yura and Edwards, Harri and Baker, Bowen and Lee, Teddy and Leike, Jan and Schulman, John and Sutskever, Ilya and Cobbe, Karl},
+	journal={arXiv preprint arXiv:2305.20050},
+	year={2023}
+}
+
+@article{wang2023mathshepherd,
+	title={Math-Shepherd: Verify and Reinforce {LLMs} Step-by-step without Human Annotations},
+	author={Wang, Peiyi and Li, Lei and Shao, Zhihong and Xu, R. and others},
+	journal={arXiv preprint arXiv:2312.08935},
+	year={2023}
+}
+
+@article{xu2025chainofdraft,
+	title={Chain-of-Draft: Thinking Faster by Writing Less},
+	author={Xu, Zhiweiqiang and others},
+	journal={arXiv preprint arXiv:2502.18600},
+	year={2025}
+}
+
+@article{muennighoff2025s1,
+	title={s1: Simple Test-Time Scaling},
+	author={Muennighoff, Niklas and Yang, Zitong and Shi, Weijia and Li, Xiang Lisa and Fei-Fei, Li and Hajishirzi, Hannaneh and Yih, Wen-tau and Liang, Percy and Raghunathan, Vedant and Zettlemoyer, Luke},
+	journal={arXiv preprint arXiv:2501.19393},
+	year={2025}
+}
+
+@article{singh2023beyondhumandata,
+	title={Beyond Human Data: Scaling Self-Training for Problem-Solving via Language Models},
+	author={Singh, Avi and Co-reyes, John D. and Anand, Rhish and others},
+	journal={arXiv preprint arXiv:2312.06585},
+	year={2023}
+}
+
+% ============================================================
+% SURVEYS AND SLM-SPECIFIC (kept)
+% ============================================================
+
+@article{lu2024slmsurvey,
+	title={Small Language Models: Survey, Measurements, and Insights},
+	author={Lu, Zhiyuan and others},
+	journal={arXiv preprint arXiv:2407.13534},
+	year={2024}
+}
+
+@article{wang2024slmsurvey,
+	title={A Survey on Small Language Models},
+	author={Wang, Yuxuan and others},
+	journal={arXiv preprint arXiv:2410.15981},
+	year={2024}
+}
+
+@article{belcak2025smallagentic,
+	title={Small Language Models Are Sufficient for Agent Tasks},
+	author={Belcak, Pavel and others},
+	journal={arXiv preprint arXiv:2502.15926},
+	year={2025}
+}
+
+@article{sprague2024tocotornot,
+	title={To {CoT} or Not to {CoT}? Chain-of-thought Helps Mainly on Math and Symbolic Reasoning},
+	author={Sprague, Zachary and others},
+	journal={arXiv preprint arXiv:2409.12183},
+	year={2024}
+}
+
+@article{schaeffer2023mirage,
+	title={Are Emergent Abilities of Large Language Models a Mirage?},
+	author={Schaeffer, Rylan and Miranda, Brando and Koyejo, Sanmi},
+	booktitle={NeurIPS},
+	year={2023}
+}
+
+@article{ye2025limo,
+	title={Limo: Less Is More for Reasoning},
+	author={Ye, Yuxin and others},
+	journal={arXiv preprint arXiv:2502.03387},
+	year={2025}
+}
+
+@article{wang2025onestep,
+	title={Reinforcement Learning for Reasoning in Large Language Models with One Training Example},
+	author={Wang, Yang and others},
+	journal={arXiv preprint arXiv:2504.20571},
+	year={2025}
+}
+
+@article{dang2025rlslm,
+	title={Reinforcement Learning for Small Language Models},
+	author={Dang, Huy and others},
+	journal={arXiv preprint arXiv:2502.01456},
+	year={2025}
+}
+
+@article{guan2025rstarmath,
+	title={r{S}tar-{M}ath: Small Language Models Can Master Mathematical Reasoning with Self-Evolution},
+	author={Guan, Jian and others},
+	journal={arXiv preprint arXiv:2501.04519},
+	year={2025}
+}
+
+@article{yue2025rlcapacity,
+	title={Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?},
+	author={Yue, Chen and others},
+	journal={arXiv preprint arXiv:2504.13837},
+	year={2025}
+}
+
+@article{shao2025spurious,
+	title={Spurious Rewards in Group-Based Reinforcement Learning},
+	author={Shao, Yun and others},
+	journal={arXiv preprint arXiv:2504.04359},
+	year={2025}
+}
+
+% ============================================================
+% MODEL ARCHITECTURES (kept)
+% ============================================================
+
+@article{qwen2024qwen25,
+	title={Qwen2.5 Technical Report},
+	author={Yang, An and others},
+	journal={arXiv preprint arXiv:2412.15115},
+	year={2024}
+}
+
+@article{abdin2024phi3,
+	title={Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Laptop},
+	author={Abdin, Marah and others},
+	journal={arXiv preprint arXiv:2404.14219},
+	year={2024}
+}
+
+@article{gemma2024gemma2,
+	title={Gemma 2: Improving Open Language Models at Scale},
+	author={Team, Gemma and others},
+	journal={arXiv preprint arXiv:2408.00118},
+	year={2024}
+}
+
+@article{benallal2025smollm2,
+	title={SmolLM2: A Family of Compact Language Models},
+	author={Ben Allal, Loubna and others},
+	journal={HuggingFace Technical Report},
+	year={2025}
+}
+
+% ============================================================
+% DISTILLATION (kept)
+% ============================================================
+
+@article{mukherjee2023orca,
+	title={Orca: Progressive Learning from Complex Explanation Traces of {GPT-4}},
+	author={Mukherjee, Subhabrata and Mitra, Arindam and Jawahar, Ganesh and others},
+	journal={arXiv preprint arXiv:2306.02707},
+	year={2023}
+}
+
+@article{yu2023metamath,
+	title={{MetaMath}: Bootstrap Your Own Mathematical Questions by Training Mathematical Language Models},
+	author={Yu, Longhui and Jiang, Weiju and He, Haoran and Yu, Jincheng and Yang, Qian},
+	journal={arXiv preprint arXiv:2309.12284},
+	year={2023}
+}
+
+@article{liu2023tinygsm,
+	title={TinyGSM: Achieving over 80\% on {GSM8K} with Small Language Models Through Self-Training},
+	author={Liu, Zhihan and others},
+	journal={arXiv preprint arXiv:2312.17080},
+	year={2023}
+}
+
+@article{deepseek2025r1,
+	title={DeepSeek-R1: Incentivizing Reasoning Capability in {LLMs} via Reinforcement Learning},
+	author={DeepSeek-AI and others},
+	journal={arXiv preprint arXiv:2501.12948},
+	year={2025}
+}
+
+@article{shao2024deepseekmath,
+	title={DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models},
+	author={Shao, Zhihong and Wang, Peiyi and Zhu, Qihao and Xu, Runxin and Song, Junxiao and Bi, Mingchao and Zhang, Haowei and Zhang, Mingxi and Li, Y. K. and Wu, Y. and Guo, Z. F.},
+	journal={arXiv preprint arXiv:2402.03300},
+	year={2024}
+}
+
+@article{yu2025dapo,
+	title={{DAPO}: An Open-Source Long Context Generalization Framework for Reasoning Models},
+	author={Yu, Zhi and others},
+	journal={arXiv preprint arXiv:2503.14476},
+	year={2025}
+}
+
+@inproceedings{patel2021svamp,
+	title={Are {NLP} Models really able to Solve Simple Math Word Problems?},
+	author={Patel, Arkil and Bhattamishra, Satwik and Goyal, Navin},
+	booktitle={NAACL},
+	year={2021}
+}
+
+@inproceedings{clark2018arc,
+	title={Think you have Solved Question Answering? Try {ARC}, the {AI2} Reasoning Challenge},
+	author={Clark, Peter and Cowhey, Isaac and Aronson, Oren and others},
+	journal={arXiv preprint arXiv:1803.05457},
+	year={2018}
+}
+
+@inproceedings{talmor2018commonsenseqa,
+	title={Commonsense{QA}: A Question Answering Challenge Targeting Commonsense Knowledge},
+	author={Talmor, Alon and Herzig, Jonathan and Lourie, Nicholas and Berant, Jonathan},
+	booktitle={NAACL},
+	year={2019}
+}
+
+@inproceedings{geva2021strategyqa,
+	title={Did Aristotle Use a Laptop? A Question Answering Benchmark with Implicit Reasoning Strategies},
+	author={Geva, Mor and Khashabi, Daniel and Segal, Elad and Khot, Tushar and Roth, Dan and Berant, Jonathan},
+	booktitle={TACL},
+	year={2021}
+}
+
+@inproceedings{yang2018hotpotqa,
+	title={Hotpot{QA}: A Dataset for Diverse, Explainable Multi-hop Question Answering},
+	author={Yang, Zhilin and Qi, Peng and Zhang, Saizheng and others},
+	booktitle={EMNLP},
+	year={2018}
+}
+
+% ============================================================
+% NEW 2026 REFERENCES (added)
+% ============================================================
+
+@inproceedings{zhou2026overthinking,
+	title={When More Thinking Hurts: Overthinking in {LLM} Test-Time Compute Scaling},
+	author={Zhou, Yuxiang and others},
+	booktitle={ACL Findings},
+	year={2026}
+}
+
+@article{dcoT2026,
+	title={{D-CoT}: Disciplined Chain-of-Thought Learning for Efficient Reasoning in Small Language Models},
+	author={Ubukata, Shunsuke},
+	journal={arXiv preprint arXiv:2602.21786},
+	year={2026}
+}
+
+@inproceedings{latentGuided2026,
+	title={Latent-Guided Reasoning: Empowering Small Language Models with Cognitive Distillation},
+	author={Chen, Hanzhu},
+	booktitle={ICLR},
+	year={2026}
+}
+
+@article{rewardGranularity2026,
+	title={Reward Granularity in {RLVR}: Comparing Process and Outcome Reward Structures for Mathematical Reasoning in Small Language Models},
+	author={Glick, Rebecca},
+	journal={arXiv preprint arXiv:2607.02869},
+	year={2026}
+}
+
+@article{rlSmallLLM2026,
+	title={Reinforcement Learning for Reasoning in Small {LLMs}: What Works and What Doesn't},
+	author={Dang,Quy-Anh},
+	journal={arXiv preprint arXiv:2503.16219},
+	year={2025},
+	note={Updated 2026}
+}
+
+@article{cottonLite2026,  %pooli
+	title={Divide and Conquer: Optimizing Code Chain-of-Thought in Small Language Model},
+	author={Shen,Yang },
+	journal={Engineering Applications of Artificial Intelligence},
+	year={2026}
+}
+
+@inproceedings{scoT2026,
+	title={Efficient Reasoning for {LLMs} through Speculative Chain-of-Thought},
+	author={Wang,Li},
+	booktitle={ACL Findings},
+	year={2026}
+}
+
+@inproceedings{rcpd2026,
+	title={Mitigating Overthinking in {LLMs} via Reasoning Completion Point Detection},
+	author={Guan,Li},
+	booktitle={ACL},
+	year={2026}
+}
+
+@article{thinkDeep2026,
+	title={Think Deep, Not Just Long: Measuring {LLM} Reasoning Effort via Deep-Thinking Tokens},
+	author={Chen,Peng},
+	journal={arXiv preprint arXiv:2602.13517},
+	year={2026}
+}
+
+@article{futureMind2026,
+	title={{FutureMind}: Equipping Small Language Models with Strategic Thinking-Pattern Priors via Adaptive Knowledge Distillation},
+	author={Yang,Li},
+	journal={arXiv preprint arXiv:2602.01222},
+	year={2026}
+}
+
+@inproceedings{rllmServing2026,
+	title={Reasoning Language Model Inference Serving: Characterization, Optimization, and Benchmarks},
+	author={Li, Wu},
+	booktitle={ICLR},
+	year={2026}
+}
+
+@article{realRewards2026,
+	title={Rewards as Labels: Revisiting {RLVR} from a Classification Perspective},
+	author={Zhai, Chen},
+	journal={arXiv preprint arXiv:2602.05630},
+	year={2026}
+}
